@@ -7,14 +7,15 @@ public class Triangle {
 		this.y = side2;
 		this.z = side3;
 		calculateType();
-		System.out.println(type);
 	}
 
-	public void calculateType(){
-		this.type = null;
-		//TODO flyt check til input
-		if (x + y <= z || x + z <= y && y + z <= x){
-			System.err.println("not a triangle");
+	public TriangleTypes getType() {
+		return type;
+	}
+
+	private void calculateType(){
+		if (!checkIfValid(this.x, this.y, this.z)) {
+			this.type = TriangleTypes.INVALID;
 			return;
 		}
 		if (x == y && y == z && z == x){
@@ -28,11 +29,11 @@ public class Triangle {
 		}
 	}
 
+	// TODO rewrite so it throws an error if invalid
 	public static TriangleTypes calculateType(double a, double b, double c){
 		TriangleTypes type;
-		//flyt check til input
-		if (a + b <= c || a + c <= b && b + c <= a){
-			System.err.println("not a triangle");
+		if (!checkIfValid(a, b, c)) {
+			type = TriangleTypes.INVALID;
 		}
 		if (a == b && b == c && c == a){
 			type = TriangleTypes.EQUILATERAL;
@@ -44,25 +45,11 @@ public class Triangle {
 		return type;
 	}
 
-	// TODO fjern error handling
-	public String getType(){
-		String s = null;
-		try {
-		switch (type) {
-			case EQUILATERAL:
-				s = "Triangle is Equilateral";
-				break;
-			case SCALENE:
-				s = "Triangle is Scalene";
-				break;
-			case ISOCELES:
-				s = "Isoceles";
-				return s;
-			}
-		return s;
-		} catch (NullPointerException e) {
-			s = e.getMessage();
-			return s;
+	/* Check if triangle is valid according to Inequality Theorem */
+	private static boolean checkIfValid(double x, double y, double z) {
+		if (x + y <= z || x + z <= y && y + z <= x) {
+			return false;
 		}
+		return true;
 	}
 }
