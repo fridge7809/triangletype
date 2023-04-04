@@ -37,10 +37,10 @@ public class Main {
 		
 		// Instance
 		Triangle t = new Triangle(x, y, z);
-		System.out.println(t.getType());
+		System.out.println("Triangle is " + t.getType());
 
 		// Static usage
-		// System.out.println(Triangle.calculateType(x, y, z));
+		// System.out.println("Triangle is " + Triangle.calculateType(x, y, z));
 	}
 	
 	private static void validateSide(double side) throws Exception {
