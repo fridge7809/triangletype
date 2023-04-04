@@ -1,12 +1,8 @@
-/**
- * Main
- */
 import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
-		//TODO forklarende errmssg
-		// Init program
+		
 		double x = 0, y = 0, z = 0;
 		Scanner input = new Scanner(System.in);
 		System.out.println("--Triangle Type Program--");
@@ -44,7 +40,7 @@ public class Main {
 		System.out.println(t.getType());
 
 		// Static usage
-		System.out.println(Triangle.calculateType(x, y, z));
+		// System.out.println(Triangle.calculateType(x, y, z));
 	}
 	
 	private static void validateSide(double side) throws Exception {
